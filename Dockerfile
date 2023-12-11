@@ -5,6 +5,7 @@ COPY pom.xml .
 COPY .mvn .mvn
 COPY mvnw .
 RUN chmod +x ./mvnw
+RUN mvn clean install
 
 FROM openjdk:8-jre-alpine
 WORKDIR /app
