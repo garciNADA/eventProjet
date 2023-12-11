@@ -2,11 +2,10 @@ FROM openjdk:8-jdk-alpine as mvn-build
 WORKDIR /app/build
 COPY ./src ./src
 COPY pom.xml .
-RUN apk add --no-cache maven
 COPY .mvn .mvn
 COPY mvnw .
 RUN chmod +x ./mvnw
-RUN mvn clean install
+RUN ./mvnw clean install -Dmaven
 
 FROM openjdk:8-jre-alpine
 WORKDIR /app
